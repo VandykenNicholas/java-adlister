@@ -36,11 +36,11 @@ CREATE TABLE ads_cat(
                            FOREIGN KEY (ad_id) REFERENCES ads (id)
 );
 
-# INSERT INTO users(email,password) VALUES
-#                              ('Tripp@example.com','password'),
-#                              ('Javi@example.com','password'),
-#                              ('Paul@example.com','password'),
-#                              ('Matt@example.com','password');
+INSERT INTO users(email,password) VALUES
+                             ('Tripp@example.com','password'),
+                             ('Javi@example.com','password'),
+                             ('Paul@example.com','password'),
+                             ('Matt@example.com','password');
 #
 # INSERT INTO ads(title, description, users_id ) VALUES
 #                ('70s Chevy, GOOD CONDITION, only 30K', '625 Big Block, restored interior, Power steering, new tires, OEM parts, tuned up (new belts, radiator)', 1),

@@ -1,18 +1,18 @@
 public class Ad {
     private long id;
-    private long userId;
+    private long users_Id;
     private String title;
     private String description;
 
     public Ad(long id, long userId, String title, String description) {
         this.id = id;
-        this.userId = userId;
+        this.users_Id = userId;
         this.title = title;
         this.description = description;
     }
 
     public Ad(long userId, String title, String description) {
-        this.userId = userId;
+        this.users_Id = userId;
         this.title = title;
         this.description = description;
     }
@@ -26,11 +26,11 @@ public class Ad {
     }
 
     public long getUserId() {
-        return userId;
+        return users_Id;
     }
 
     public void setUserId(long userId) {
-        this.userId = userId;
+        this.users_Id = userId;
     }
 
     public String getTitle() {
