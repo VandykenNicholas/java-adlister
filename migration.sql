@@ -21,3 +21,5 @@ CREATE TABLE ads (
         ON DELETE CASCADE
 );
 
+
+SELECT * FROM ads WHERE id = 1 LIMIT 1;

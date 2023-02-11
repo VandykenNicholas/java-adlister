@@ -3,9 +3,6 @@ package com.codeup.adlister.dao;
 import com.codeup.adlister.models.Ad;
 import com.mysql.cj.jdbc.Driver;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -48,6 +45,7 @@ public class MySQLAdsDao implements Ads {
             stmt.setString(3, ad.getDescription());
             stmt.executeUpdate();
             ResultSet rs = stmt.getGeneratedKeys();
+
             rs.next();
             return rs.getLong(1);
         } catch (SQLException e) {
@@ -57,10 +55,10 @@ public class MySQLAdsDao implements Ads {
 
     private Ad extractAd(ResultSet rs) throws SQLException {
         return new Ad(
-            rs.getLong("id"),
-            rs.getLong("user_id"),
-            rs.getString("title"),
-            rs.getString("description")
+                rs.getLong("id"),
+                rs.getLong("user_id"),
+                rs.getString("title"),
+                rs.getString("description")
         );
     }
 
@@ -71,4 +69,20 @@ public class MySQLAdsDao implements Ads {
         }
         return ads;
     }
+
+    @Override
+    public Ad findById(String id) {
+        String query = "SELECT * FROM ads WHERE id = ? LIMIT 1";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setInt(1, Integer.parseInt(id));
+            ResultSet rs = stmt.executeQuery();
+            rs.next();
+            return extractAd(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error finding ad by id", e);
+        }
+    }
+
+
 }
